@@ -1,24 +1,35 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import CustomButton from './CustomButton'
+import dynamic from 'next/dynamic'
 
-export default function Navbar() {
+function Navbar() {
   return (
-    <header className='w-full absolute z-10'   >
+
+    <header className='w-full absolute z-10' suppressHydrationWarning={true}>
       <nav className='max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4'>
         <Link href='/' className='flex justify-center items-center'>
-          <Image src="/logo.svg" sizes='' alt='Steer X logo'
-           width={118} height={18}
-           className='object-contain'/>
+          {/* <Image src="/logo.svg" alt='Steer X logo' width={118} height={18} className='object-contain' /> */}
         </Link>
 
-        <CustomButton
-          title='Sign In'
+        <CustomButton title='Sign In'
           btnType="button"
-          containerStyles='text-primary-blue rounded-full bg-white min-w-[110px]'
+          containerStyles='text-primary-blue 
+      rounded-full bg-white min-w-[110px]'
         />
       </nav>
     </header>
+
   )
 }
+
+export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
+
+
+
+
+
+
+

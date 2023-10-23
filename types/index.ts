@@ -18,6 +18,7 @@ export interface SearchManufacturerProps {
 export interface CarProps {
   city_mpg: number;
   class: string;
+  combination_mpg: number;
   cylinders: number;
   displacement: number;
   drive: string;
